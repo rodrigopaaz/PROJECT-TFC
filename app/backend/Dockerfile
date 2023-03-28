@@ -1,3 +1,19 @@
+FROM node:16.14-alpine
+
+WORKDIR /app-backend
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . ./
+
+EXPOSE 3001
+
+ENTRYPOINT [ "npm", "run" ]
+CMD [ "start" ]
+
+
 # Usar a imagem node:16.14-alpine como base
 
 # Mudar para o diretório de trabalho /app-backend
