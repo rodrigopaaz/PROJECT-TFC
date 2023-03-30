@@ -1,3 +1,4 @@
 import teamsRoutes from './Teams.Router';
+import userRoutes from './Users.Router';
 
-export default teamsRoutes;
+export { userRoutes, teamsRoutes };

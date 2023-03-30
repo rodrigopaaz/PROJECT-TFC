@@ -33,10 +33,6 @@ Users.init(
       allowNull: false,
       type: STRING,
     },
-    inProgress: {
-      allowNull: false,
-      type: STRING,
-    },
   },
   {
     underscored: true,

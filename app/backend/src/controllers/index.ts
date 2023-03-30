@@ -1,3 +1,3 @@
-import teamController from './Team.Controller';
+import TeamController from './Team.Controller';
 
-export default teamController;
+export default TeamController;
