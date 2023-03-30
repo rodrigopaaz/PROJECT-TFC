@@ -1,3 +1,4 @@
+import { JwtPayload } from 'jsonwebtoken';
 import Users from '../database/models/UsersModel';
 import { IUser } from './interfaces';
 
@@ -7,7 +8,7 @@ export default class UsersService {
     return users;
   };
 
-  findUser = async (user:IUser) => {
+  findUser = async (user:IUser | JwtPayload) => {
     const allUsers = await this.getAll();
     const getUser = allUsers.find((person:IUser) => person.email === user.email);
     return getUser;

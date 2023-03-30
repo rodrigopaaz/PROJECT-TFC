@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import ValidateToken from '../middlewares/validateToken';
 import UsersController from '../controllers/User.Controller';
 import ValidateUser from '../middlewares/ValidateUser';
 
@@ -8,5 +9,7 @@ const userController = new UsersController();
 const router = Router();
 
 router.post('/', validateUser.validate, userController.findByUser);
+
+router.get('/role', ValidateToken, userController.findByRole);
 
 export default router;
