@@ -1,6 +1,5 @@
 import { ITeam } from './ITeam';
 import { IUser } from './IUser';
+import { IMatch } from './IMatch';
 
-export default ITeam;
-
-export { IUser };
+export { IUser, IMatch, ITeam };

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import * as bcrypt from 'bcryptjs';
 import { IUser } from '../services/interfaces';
-import UsersService from '../services/User.Service';
+import { UsersService } from '../services';
 
 export default class ValidateUser {
   constructor(private _service = new UsersService()) { }
