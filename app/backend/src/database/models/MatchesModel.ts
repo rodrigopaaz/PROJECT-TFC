@@ -38,8 +38,6 @@ Matches.init(
         model: 'teams',
         key: 'id',
       },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
     },
     awayTeamGoals: {
       allowNull: false,

@@ -6,7 +6,19 @@ import { IMatch } from './interfaces';
 export default class MatchsService {
   private _model: ModelStatic<Matches> = Matches;
 
-  public async GetMatchesNoFilter(query:IMatch): Promise<IMatch[]> {
+  CreateMatch = async (user:IMatch): Promise<IMatch[]> => {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress = 1 } = user;
+    const users = await Matches.create({
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+      inProgress,
+    });
+    return [users] || '';
+  };
+
+  public async FilteredMatches(query:IMatch): Promise<IMatch[]> {
     const { inProgress } = query;
     const bool = () => {
       switch (inProgress) {
@@ -27,9 +39,21 @@ export default class MatchsService {
     return result;
   }
 
-  findById = async (id:string): Promise<IMatch[]> => {
-    const users = await Matches.findByPk(id);
-    if (users) return [users];
-    return [];
+  FinishMatch = async (id:string): Promise<IMatch[]> => {
+    const users = await Matches.update({ inProgress: false }, {
+      where: { id },
+    });
+    return users as IMatch[] || '';
+  };
+
+  UpdateMatch = async (
+    id:string,
+    homeTeamGoals:string,
+    awayTeamGoals:string,
+  ): Promise<IMatch[]> => {
+    const users = await Matches.update({ homeTeamGoals, awayTeamGoals }, {
+      where: { id },
+    });
+    return users as IMatch[] || '';
   };
 }
