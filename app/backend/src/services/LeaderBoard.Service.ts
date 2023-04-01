@@ -7,7 +7,7 @@ export default class LeaderBoardService {
   Matches =
   async (field:string, team:string, homeGoals:string, awayGoals:string):Promise<IData[]> => {
     const data = await Matches.findAll({
-      attributes: [field,
+      attributes: [field, 'inProgress',
         [sequelize.fn('sum', sequelize.col(homeGoals)), 'goalsFavor'],
         [sequelize.fn('sum', sequelize.col(awayGoals)), 'goalsOwn'],
         [sequelize.fn('count', sequelize.col('home_team_id')), 'totalGames'],
@@ -15,13 +15,14 @@ export default class LeaderBoardService {
         [sequelize.fn('sum', sequelize.literal(`${awayGoals} > ${homeGoals}`)),
           'totalLosses'],
         [sequelize.fn('sum', sequelize.literal(`${awayGoals} = ${homeGoals}`)), 'totalDraws'],
+        [sequelize.fn('sum', sequelize.literal(`${awayGoals} - ${homeGoals}`)), 'goalsBalance'],
         [sequelize.fn('sum', sequelize.literal(`${awayGoals} < ${homeGoals}`)),
-          'totalVictories'],
-      ],
+          'totalVictories']],
+      where: { inProgress: false },
       group: [field],
-      include: [
-        { model: Teams, as: team },
-      ] });
+      order: [['totalVictories', 'DESC'], ['totalDraws', 'DESC'], ['goalsBalance', 'ASC'],
+        ['goalsFavor', 'DESC']],
+      include: [{ model: Teams, as: team }] });
     return data as unknown as IData[];
   };
 
@@ -30,8 +31,9 @@ export default class LeaderBoardService {
     const getWinner = data.map(({ dataValues }) => {
       const { totalLosses, goalsFavor, goalsOwn,
         homeTeam, awayTeam, totalDraws, totalGames, totalVictories } = dataValues;
-      const totalPoints = Number(totalVictories) * 3 + Number(totalDraws);
+      const totalPoints = Number(totalVictories) * 3 + Number(totalDraws) * 1;
       const name = homeTeam ? homeTeam.teamName : awayTeam.teamName;
+      const efficiency = ((Number(totalPoints) / (Number(totalGames) * 3)) * 100);
       const team = { name,
         totalPoints,
         totalGames: Number(totalGames),
@@ -41,10 +43,8 @@ export default class LeaderBoardService {
         goalsFavor: Number(goalsFavor),
         goalsOwn: Number(goalsOwn),
         goalsBalance: goalsFavor - goalsOwn,
-        efficiency: (Number(totalVictories) / Number(totalGames)) * 100 }; return team;
-    });
-
-    return getWinner;
+        efficiency: +efficiency.toFixed(2) }; return team;
+    }); return getWinner;
   };
 
   HomeTeam = async () => {
@@ -54,7 +54,7 @@ export default class LeaderBoardService {
       'home_team_goals',
       'away_team_goals',
     );
-    return { ...getLeaderBoard };
+    return getLeaderBoard;
   };
 
   AwayTeam = async () => {
