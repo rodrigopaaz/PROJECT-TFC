@@ -4,46 +4,66 @@ import Matches from '../database/models/MatchesModel';
 import { IData } from './interfaces/ILeader';
 
 export default class LeaderBoardService {
-  Matches = async (field:string):Promise<IData[]> => {
+  Matches =
+  async (field:string, team:string, homeGoals:string, awayGoals:string):Promise<IData[]> => {
     const data = await Matches.findAll({
       attributes: [field,
-        [sequelize.fn('sum', sequelize.col('home_team_goals')), 'goalsFavor'],
-        [sequelize.fn('sum', sequelize.col('away_team_goals')), 'goalsOwn'],
+        [sequelize.fn('sum', sequelize.col(homeGoals)), 'goalsFavor'],
+        [sequelize.fn('sum', sequelize.col(awayGoals)), 'goalsOwn'],
         [sequelize.fn('count', sequelize.col('home_team_id')), 'totalGames'],
-        [sequelize.fn('sum', sequelize.literal('away_team_goals > home_team_goals')),
+        [sequelize.fn('count', sequelize.col('away_team_id')), 'totalGames'],
+        [sequelize.fn('sum', sequelize.literal(`${awayGoals} > ${homeGoals}`)),
           'totalLosses'],
-        [sequelize.fn('sum', sequelize.literal('away_team_goals = home_team_goals')), 'totalDraws'],
-        [sequelize.fn('sum', sequelize.literal('away_team_goals < home_team_goals')),
+        [sequelize.fn('sum', sequelize.literal(`${awayGoals} = ${homeGoals}`)), 'totalDraws'],
+        [sequelize.fn('sum', sequelize.literal(`${awayGoals} < ${homeGoals}`)),
           'totalVictories'],
       ],
       group: [field],
-
       include: [
-        { model: Teams, as: 'homeTeam' },
-      ],
-    });
+        { model: Teams, as: team },
+      ] });
     return data as unknown as IData[];
   };
 
-  HomeTeam = async () => {
-    const data = await this.Matches('homeTeamId');
-    const getWinner = data.map((match) => {
-      const { dataValues } = match;
+  Team = async (teamID:string, teams:string, home:string, away: string) => {
+    const data = await this.Matches(teamID, teams, home, away);
+    const getWinner = data.map(({ dataValues }) => {
       const { totalLosses, goalsFavor, goalsOwn,
-        homeTeam, totalDraws, totalGames, totalVictories } = dataValues;
+        homeTeam, awayTeam, totalDraws, totalGames, totalVictories } = dataValues;
       const totalPoints = Number(totalVictories) * 3 + Number(totalDraws);
-      const team = {
-        name: homeTeam.teamName,
+      const name = homeTeam ? homeTeam.teamName : awayTeam.teamName;
+      const team = { name,
         totalPoints,
-        totalGames,
+        totalGames: Number(totalGames),
         totalVictories: Number(totalVictories),
         totalDraws: Number(totalDraws),
         totalLosses: Number(totalLosses),
         goalsFavor: Number(goalsFavor),
         goalsOwn: Number(goalsOwn),
-      }; return team;
+        goalsBalance: goalsFavor - goalsOwn,
+        efficiency: (Number(totalVictories) / Number(totalGames)) * 100 }; return team;
     });
 
     return getWinner;
+  };
+
+  HomeTeam = async () => {
+    const getLeaderBoard = await this.Team(
+      'homeTeamId',
+      'homeTeam',
+      'home_team_goals',
+      'away_team_goals',
+    );
+    return { ...getLeaderBoard };
+  };
+
+  AwayTeam = async () => {
+    const getLeaderBoard = await this.Team(
+      'awayTeamId',
+      'awayTeam',
+      'away_team_goals',
+      'home_team_goals',
+    );
+    return getLeaderBoard;
   };
 }

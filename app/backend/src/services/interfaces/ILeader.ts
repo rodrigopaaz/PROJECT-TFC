@@ -6,6 +6,7 @@ export interface ILeader extends ITeamName{
   totalGames: string,
   totalPoints:string,
   homeTeam: ITeamName
+  awayTeam: ITeamName,
   totalVictories: string,
   totalDraws:string,
   totalLosses:string
