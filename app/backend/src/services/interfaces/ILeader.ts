@@ -9,7 +9,8 @@ export interface ILeader extends ITeamName{
   awayTeam: ITeamName,
   totalVictories: string,
   totalDraws:string,
-  totalLosses:string
+  totalLosses:string,
+  goalsBalance: number,
 }
 
 export interface IData{

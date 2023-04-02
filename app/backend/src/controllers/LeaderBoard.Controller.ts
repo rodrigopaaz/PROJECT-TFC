@@ -13,4 +13,9 @@ export default class LeaderBoard {
     const matches = await this._leaderService.AwayTeam();
     res.status(200).json(matches);
   };
+
+  AllTeam = async (_req:Request, res:Response, _next:NextFunction) => {
+    const matches = await this._leaderService.AllTeam();
+    res.status(200).json(matches);
+  };
 }

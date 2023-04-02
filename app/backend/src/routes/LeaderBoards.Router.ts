@@ -8,5 +8,6 @@ const router = Router();
 
 router.get('/home', leaderBoardController.HomeTeam);
 router.get('/away', leaderBoardController.AwayTeam);
+router.get('/', leaderBoardController.AllTeam);
 
 export default router;
