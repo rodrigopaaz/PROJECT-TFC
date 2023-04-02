@@ -11,29 +11,29 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testing Endpoint Team', () => {
+describe('Testing Endpoint Match', () => {
   let chaiHttpResponse: Response;
 
   afterEach(() => sinon.restore())
   it('Return status must be 200', async() => {
-    chaiHttpResponse = await chai.request(app).get('/teams')
+    chaiHttpResponse = await chai.request(app).get('/matches')
     expect(chaiHttpResponse.status).to.be.eq(200);
   });
 
-  it('get all teams', async() => {    
+  it('Get all matches', async() => {    
     const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams')
-    expect(chaiHttpResponse.body).to.exist;
-  });
-  it('getting team by id', async() => {    
-    const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams/1')
+    chaiHttpResponse = await chai.request(app).get('/matches')
     expect(chaiHttpResponse.body).to.exist;
   });
 
-  it('Teams does not exist test', async() => {    
+  it('Get matches by id', async() => {    
     const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams/100')
+    chaiHttpResponse = await chai.request(app).patch('/matches/1/')
+    expect(chaiHttpResponse.body).to.exist;
+  });
+  it('Finish match test', async() => {    
+    const mock = 
+    chaiHttpResponse = await chai.request(app).patch('/matches/1/finish')
     expect(chaiHttpResponse.body).to.exist;
   });
    })

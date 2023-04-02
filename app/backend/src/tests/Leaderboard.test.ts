@@ -11,29 +11,30 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testing Endpoint Team', () => {
+describe('Testing Endpoint Leaderboard', () => {
   let chaiHttpResponse: Response;
 
   afterEach(() => sinon.restore())
   it('Return status must be 200', async() => {
-    chaiHttpResponse = await chai.request(app).get('/teams')
+    chaiHttpResponse = await chai.request(app).get('/leaderboard')
     expect(chaiHttpResponse.status).to.be.eq(200);
   });
 
-  it('get all teams', async() => {    
+  it('Return must be equal to mockFile', async() => {    
     const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams')
-    expect(chaiHttpResponse.body).to.exist;
-  });
-  it('getting team by id', async() => {    
-    const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams/1')
+    chaiHttpResponse = await chai.request(app).get('/leaderboard')
     expect(chaiHttpResponse.body).to.exist;
   });
 
-  it('Teams does not exist test', async() => {    
+  it('Return must be equal to mockFile', async() => {    
     const mock = 
-    chaiHttpResponse = await chai.request(app).get('/teams/100')
+    chaiHttpResponse = await chai.request(app).get('/leaderboard/home')
+    expect(chaiHttpResponse.body).to.exist;
+  });
+
+  it('Return must be equal to mockFile', async() => {    
+    const mock = 
+    chaiHttpResponse = await chai.request(app).get('/leaderboard/away')
     expect(chaiHttpResponse.body).to.exist;
   });
    })

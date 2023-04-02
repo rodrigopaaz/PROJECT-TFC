@@ -9,8 +9,7 @@ export default class UsersService {
   };
 
   findUser = async (user:IUser | JwtPayload) => {
-    const allUsers = await this.getAll();
-    const getUser = allUsers.find((person:IUser) => person.email === user.email);
+    const getUser = await Users.findOne({ where: { email: user.email } });
     return getUser;
   };
 }
