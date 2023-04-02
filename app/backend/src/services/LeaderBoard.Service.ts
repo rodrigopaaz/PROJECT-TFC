@@ -30,10 +30,10 @@ export default class LeaderBoardService {
   Team = async (teamID:string, teams:string, home:string, away: string) => {
     const data = await this.Matches(teamID, teams, home, away);
     const getWinner = data.map(({ dataValues }) => {
-      const { totalLosses, goalsFavor, goalsOwn,
-        homeTeam, awayTeam, totalDraws, totalGames, totalVictories } = dataValues;
-      const totalPoints = Number(totalVictories) * 3 + Number(totalDraws) * 1;
+      const { totalLosses, goalsFavor, goalsOwn, homeTeam, awayTeam,
+        totalDraws, totalGames, totalVictories } = dataValues;
       const name = homeTeam ? homeTeam.teamName : awayTeam.teamName;
+      const totalPoints = Number(totalVictories) * 3 + Number(totalDraws) * 1;
       const efficiency = ((Number(totalPoints) / (Number(totalGames) * 3)) * 100);
       const team = { name,
         totalPoints,
