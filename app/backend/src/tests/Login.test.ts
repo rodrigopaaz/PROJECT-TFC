@@ -24,7 +24,7 @@ describe('Testing Endpoint Login', () => {
         role: 'admin',
         email: 'admin@admin.com',
         password:
-        'secret_admin',
+        '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW',
       } as Users);
     })
 
@@ -48,23 +48,22 @@ describe('Testing Endpoint Login', () => {
     expect(chaiHttpResponse.status).to.be.eq(400);
   });
 
-  it('Return must be equal to mockFile', async() => {    
+  it('Trying login using a valid value', async() => {    
     chaiHttpResponse = await chai
-      .request(app)
-      .post('/login')
-      .send({ email: 'admin@admin.com', password: 'secret_admin' });
+      .request(app).post('/login').send({ 
+        email: 'admin@admin.com', password: 'secret_admin' });
 
     expect(chaiHttpResponse.status).to.eq(200);
   });
+
+  it('Trying login using a invalid value', async() => {    
+    chaiHttpResponse = await chai
+      .request(app).post('/login').send({ 
+        email: 'admin@admin.com', password: 'crazy_admin' });
+
+    expect(chaiHttpResponse.status).to.eq(401);
+  });
    })
 
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
-  
 
 
