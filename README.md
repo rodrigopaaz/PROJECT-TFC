@@ -46,3 +46,23 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Jwt](https://jwt.io/)**
 -   **[Mocha](https://mochajs.org/)**
 -   **[Chai](https://www.chaijs.com/)**
+
+## Executando o projeto
+Para executar o projeto, é necessário:
+
+1. Clonar este repositório
+  ```
+  git clone https://github.com/rodrigopaaz/PROJECT-TFC.git
+  ```
+2. Instalar as dependências na branch `main`
+  ```
+  npm install
+  ```
+3. Ter um servidor MySQL no computador
+
+4. Ter um cliente MySQL e conectá-lo ao servidor
+
+5. Executar as queries do arquivo `Trybesmith.sql` no cliente MySQL para criar o banco de dados
+
+6. Iniciar o servidor da aplicação
+  ```
