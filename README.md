@@ -58,7 +58,7 @@ Para executar o projeto, é necessário:
   ```
   npm install
   ```
-3. Rodar o projeto `main`
+3. Rodar o projeto
   ```
   npm start
   ```
