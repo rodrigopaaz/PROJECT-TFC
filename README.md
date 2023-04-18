@@ -40,7 +40,8 @@ npm install
 ```
 npm start
 ...
-
+...
+...
 Para rodar localmente esta aplicação com docker, siga os passos abaixo:
 
 
@@ -71,7 +72,8 @@ docker-compose up -d
 npm start
 ...
 cd lexart-challenge/backend
-
+...
+...
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
