@@ -36,11 +36,13 @@ Abra um novo terminal
 cd frontend
 npm install
 ```
-4.  Inicie a aplicação:
-...
-npm start
-...
 
+
+4.  Inicie a aplicação:
+
+```
+npm start
+```
 
 Para rodar localmente esta aplicação com docker, siga os passos abaixo:
 
