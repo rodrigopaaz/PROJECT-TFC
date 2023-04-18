@@ -8,84 +8,34 @@ Uma Api em TypeScript que permite a Criação, Modificação, Exclusão e Modifi
 Além de ser possivel conferir a classificação dos times.
 
 ---
+## 🚀 Como executar o projeto
 
-## 🚀 Setup para rodar a aplicação
-Para rodar localmente esta aplicação, siga os passos abaixo:
+### Pré-requisitos
 
-1.  Abra seu terminal e crie uma pasta (O projeto será instalado dentro dela):
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+<details>
 
+```bash
+# Clone este repositório
+$ git clone https://github.com/rodrigopaaz/PROJECT-TFC.git
+# Acesse a pasta do projeto no terminal/cmd
+$ cd ProjectTrybe-TFC
+# Instale as dependências
+$ npm install
+# Execute a aplicação em modo de desenvolvimento
+$ inicie o banco de dados
+# Execute a aplicação em modo de desenvolvimento
+$ npm run debug
+# O servidor inciará na porta:3001 - acesse http://localhost:3001
 ```
-mkdir repositorio
-```
-
-2.  Clone este repositório:
-
-```
-cd repositorio
-git clone https://github.com/rodrigopaaz/lexart-challenge
-```
-
-3.  Instale as dependências (pode levar alguns minutos):
-
-```
-cd lexart-challenge/backend
-npm install
-npm start
-
-Abra um novo terminal
-cd frontend
-npm install
-```
-
-
-
-4.  Inicie a aplicação:
-
-```
-npm start
-```
-
-Para rodar localmente esta aplicação com docker, siga os passos abaixo:
-
-
-1.  Abra seu terminal e crie uma pasta (O projeto será instalado dentro dela):
-
-```
-mkdir repositorio
-```
-
-2.  Clone este repositório:
-
-```
-cd repositorio
-git clone https://github.com/rodrigopaaz/lexart-challenge
-```
-3.  Instale as dependências (pode levar alguns minutos):
-
-
-```
-npm install
-```
-
-4. Rode os containers
-
-```
-cd repositorio
-docker-compose up -d
-```
-5. Acesse os containers
-
-6. Nos respectivos containers digite
-
-```
-npm start
-```
-...
+</details>
 
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
--   **[Node.js](https://nodejs.org/en/)**
+-  **[Node.js](https://nodejs.org/en/)**
 -   **[TypeScript](https://www.typescriptlang.org/)**
 -   **[Express](https://expressjs.com/)**
 -   **[Sequelize](https://sequelize.org/)**
@@ -97,3 +47,18 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Mocha](https://mochajs.org/)**
 -   **[Chai](https://www.chaijs.com/)**
 
+## Executando o projeto
+Para executar o projeto, é necessário:
+
+1. Clonar este repositório
+  ```
+  git clone https://github.com/rodrigopaaz/PROJECT-TFC.git
+  ```
+2. Instalar as dependências na branch `main`
+  ```
+  npm install
+  ```
+3. Rodar o projeto
+  ```
+  npm start
+  ```
