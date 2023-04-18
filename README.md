@@ -16,22 +16,26 @@ Para rodar localmente esta aplicação, siga os passos abaixo:
 1.  Abra seu terminal e crie uma pasta (O projeto será instalado dentro dela):
 
 ```
-mkdir projects
+mkdir repositorio
 ```
 
 2.  Clone este repositório:
 
 ```
-cd projects
-git clone https://github.com/LucasH-Paz/Lexart-challenge.git
+cd repositorio
+git clone https://github.com/rodrigopaaz/lexart-challenge
 ```
 
 3.  Instale as dependências (pode levar alguns minutos):
 
 ```
-cd Lexart-challenge
-npm i
+cd lexart-challenge/backend
+npm install
+npm start
 ```
+Abra um novo terminal
+cd frontend
+npm install
 
 5.  Inicie a aplicação:
 ```
@@ -51,20 +55,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Jwt](https://jwt.io/)**
 -   **[Mocha](https://mochajs.org/)**
 -   **[Chai](https://www.chaijs.com/)**
-
-## Executando o projeto
-Para executar o projeto, é necessário:
-
-1. Clonar este repositório
-  ```
-  git clone https://github.com/rodrigopaaz/PROJECT-TFC.git
-  ```
-2. Instalar as dependências na branch `main`
-  ```
-  npm install
-  ```
-3. Rodar o projeto
-  ```
-  npm start
-  ```
 
