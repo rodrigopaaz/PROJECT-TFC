@@ -39,7 +39,7 @@ npm install
 5.  Inicie a aplicação:
 ```
 npm start
-
+...
 Para rodar localmente esta aplicação com docker, siga os passos abaixo:
 
 
@@ -64,14 +64,13 @@ git clone https://github.com/rodrigopaaz/lexart-challenge
 docker-compose up -d
 ...
 5. Acesse os containers
-
+...
+...
 6. Nos respectivos containers digite
 ...
 npm start
 ...
-cd lexart-challenge/backend
-...
-...
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
