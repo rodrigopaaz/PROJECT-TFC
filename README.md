@@ -37,7 +37,7 @@ cd frontend
 npm install
 ```
 5.  Inicie a aplicação:
-```
+
 npm start
 ...
 
