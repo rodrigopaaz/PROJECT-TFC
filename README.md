@@ -31,15 +31,16 @@ git clone https://github.com/rodrigopaaz/lexart-challenge
 cd lexart-challenge/backend
 npm install
 npm start
-```
+
 Abra um novo terminal
 cd frontend
 npm install
-
+```
 5.  Inicie a aplicação:
 ```
 npm start
 ...
+
 Para rodar localmente esta aplicação com docker, siga os passos abaixo:
 
 
