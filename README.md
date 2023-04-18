@@ -63,10 +63,23 @@ git clone https://github.com/rodrigopaaz/lexart-challenge
 
 3.  Instale as dependências (pode levar alguns minutos):
 
-```
 npm install
+
+4. Rode os containers
+
+```
+cd repositorio
+docker-compose up -d
+```
+...
+5. Acesse os containers
 ...
 
+6. Nos respectivos containers digite
+...
+npm start
+...
+...
 
 ## 🛠 Tecnologias
 
