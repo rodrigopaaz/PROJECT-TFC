@@ -60,12 +60,12 @@ mkdir repositorio
 cd repositorio
 git clone https://github.com/rodrigopaaz/lexart-challenge
 ```
-
 3.  Instale as dependências (pode levar alguns minutos):
 
-...
+
+```
 npm install
-...
+```
 
 4. Rode os containers
 
