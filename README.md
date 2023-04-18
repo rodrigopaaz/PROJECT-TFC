@@ -39,7 +39,7 @@ npm install
 5.  Inicie a aplicação:
 ```
 npm start
-
+...
 
 Para rodar localmente esta aplicação com docker, siga os passos abaixo:
 
