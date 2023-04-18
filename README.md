@@ -8,9 +8,8 @@ Uma Api em TypeScript que permite a Criação, Modificação, Exclusão e Modifi
 Além de ser possivel conferir a classificação dos times.
 
 ---
-## 🚀 Como executar o projeto
 
-## Setup para rodar a aplicação
+## 🚀 Setup para rodar a aplicação
 Para rodar localmente esta aplicação, siga os passos abaixo:
 
 1.  Abra seu terminal e crie uma pasta (O projeto será instalado dentro dela):
