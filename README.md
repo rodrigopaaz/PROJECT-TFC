@@ -76,10 +76,10 @@ docker-compose up -d
 5. Acesse os containers
 
 6. Nos respectivos containers digite
-...
+
+```
 npm start
-...
-...
+```
 
 ## 🛠 Tecnologias
 
