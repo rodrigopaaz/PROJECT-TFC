@@ -8,7 +8,7 @@ const config: Options = {
   password: process.env.MYSQLPASSWORD || '123456',
   database: process.env.MYSQLDATABASE || 'railway',
   host: process.env.MYSQLHOST || 'localhost',
-  port: Number(process.env.MYSQLPORT) || 3002,
+  port: Number(process.env.MYSQLPORT),
   dialect: 'mysql',
   dialectModule: mysql2,
   dialectOptions: {
