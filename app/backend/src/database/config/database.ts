@@ -1,6 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 import 'dotenv/config';
 import { Options } from 'sequelize';
+import * as mysql2 from 'mysql2';
 
 const config: Options = {
   username: process.env.MYSQLUSER || 'root',
@@ -9,6 +10,7 @@ const config: Options = {
   host: process.env.MYSQLHOST || 'localhost',
   port: Number(process.env.MYSQLPORT) || 3002,
   dialect: 'mysql',
+  dialectModule: mysql2,
   dialectOptions: {
     timezone: 'Z',
   },
